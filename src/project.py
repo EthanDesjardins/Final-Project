@@ -7,18 +7,22 @@ def dice():
     
     return roll
 
-def rounds():
+def rounds(result):
     max_health = 100
     player_health = 100
     current_damage = 0
 
-    keep_roll = input("Would you like to keep rolling? yes/no")
-    if keep_roll == "yes":
-        score = dice()
+    while current_damage <= player_health:
+        keep_roll = input("Would you like to keep rolling? yes/no")
+        if keep_roll == "yes":
+            score = dice()
+            current_damage += score
+            print("Your damage is :" , current_damage)
     
-    if keep_roll == "no":
-        print("Your turn is over")
+        if keep_roll == "no":
+            print("Your turn is over")
 
+    return "player 2 wins"
 def main():
 
     while True:
@@ -31,7 +35,21 @@ def main():
         else:
             print("Invalid, please enetr a number between 1 and 10.")
     
-    rounds()
+    max_health = 100
+    player_health = 100
+    current_damage = 0
+
+    while current_damage <= player_health:
+        keep_roll = input("Do you want to roll? yes/no:")
+        if keep_roll == "yes":
+            score = dice()
+            current_damage += score
+            print("Your damage is :" , current_damage)
+    
+        if keep_roll == "no":
+            print("Your turn is over")
+            print(f"You have done {current_damage} points of damage!")
+            break
     # roll = dice()
     # print(f"Player 1 your roll is {roll}, do you want to roll again?")
     # roll = roll + dice()
