@@ -35,8 +35,15 @@ def main():
         else:
             print("Invalid, please enetr a number between 1 and 10.")
     
+
+
+#
     max_health = 100
     player_health = 100
+    player1_points = 0
+    player2_points = 0
+    player1_damage = 0
+    player2_damage = 0
     current_damage = 0
 
     while current_damage <= player_health:
@@ -50,10 +57,17 @@ def main():
             print("Your turn is over")
             print(f"You have done {current_damage} points of damage!")
             break
-    # roll = dice()
-    # print(f"Player 1 your roll is {roll}, do you want to roll again?")
-    # roll = roll + dice()
-    # print(f"Player 1 your roll is {roll}, do you want to roll again?")
+    
+    if  player1_damage > player2_damage:
+        player1_points += 1
+    elif player2_damage > player1_damage:
+        player2_points += 1
+    else:
+        print("It was a tie!")
+
+
+
+#
 
 if __name__ == "__main__":
     main()
