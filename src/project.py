@@ -7,22 +7,9 @@ def dice():
     
     return roll
 
-def rounds(result):
-    max_health = 100
-    player_health = 100
-    current_damage = 0
+def rounds():
+   
 
-    while current_damage <= player_health:
-        keep_roll = input("Would you like to keep rolling? yes/no")
-        if keep_roll == "yes":
-            score = dice()
-            current_damage += score
-            print("Your damage is :" , current_damage)
-    
-        if keep_roll == "no":
-            print("Your turn is over")
-
-    return "player 2 wins"
 def main():
 
     while True:
@@ -38,32 +25,33 @@ def main():
 
 
 #
-    max_health = 100
     player_health = 100
-    player1_points = 0
-    player2_points = 0
-    player1_damage = 0
-    player2_damage = 0
+    # player1_points = 0
+    # player2_points = 0
+    # player1_damage = 0
+    # player2_damage = 0
     current_damage = 0
+    player_score = ["player1" , "player2"]
 
-    while current_damage <= player_health:
-        keep_roll = input("Do you want to roll? yes/no:")
-        if keep_roll == "yes":
-            score = dice()
-            current_damage += score
-            print("Your damage is :" , current_damage)
-    
-        if keep_roll == "no":
-            print("Your turn is over")
-            print(f"You have done {current_damage} points of damage!")
-            break
-    
-    if  player1_damage > player2_damage:
-        player1_points += 1
-    elif player2_damage > player1_damage:
-        player2_points += 1
-    else:
-        print("It was a tie!")
+    for round_num in range(rounds):
+        while current_damage <= player_health:
+            keep_roll = input("Do you want to roll? yes/no:")
+            if keep_roll == "yes":
+                score = dice()
+                current_damage += score
+                print("Your damage is :" , current_damage)
+        
+            if keep_roll == "no":
+                print("Your turn is over")
+                print(f"You have done {current_damage} points of damage!")
+                break
+            
+            if score == 1:
+                print("You rolled a 1! Your turn is over!")
+                break
+        
+        round_num = 0
+        round_num += 1
 
 
 
