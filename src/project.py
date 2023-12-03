@@ -47,7 +47,7 @@ def main():
 
     start_round = intro()
 
-    player_health = 20
+    player_health = 50
     player1_health = player_health
     player2_health = player_health
     current_damage = 0
