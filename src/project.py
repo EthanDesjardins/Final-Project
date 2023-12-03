@@ -17,21 +17,19 @@ def round(damage):
         if keep_roll == "yes" and score != 1:
             current_damage += score
             print("Your damage is :" , current_damage)
-            return current_damage
         
         if keep_roll == "no":
             keep_going = False
             print("Your turn is over")
             print(f"You have done {current_damage} points of damage!")
-            return current_damage
-            
-                        
+                          
         if keep_roll == "yes" and score == 1:
             keep_going = False
             print("You rolled a 1! Your turn is over!")
             current_damage = 0
             print(f"You have done {current_damage} points of damage!")
-            return current_damage
+        
+    return current_damage
         
 
 def main():
