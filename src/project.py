@@ -30,10 +30,8 @@ def round(damage):
             print(f"You have done {current_damage} points of damage!")
         
     return current_damage
-        
 
-def main():
-
+def intro():
     while True:
         rounds = input("Enter how many rounds (1-10): ")
         
@@ -43,46 +41,40 @@ def main():
                 break
         else:
             print("Invalid, please enetr a number between 1 and 10.")
+    return rounds
+
+def main():
+
+    start_round = intro()
 
     player_health = 20
     player1_health = player_health
     player2_health = player_health
-    players = 2
     current_damage = 0
     player_points = {"player1 damage": 0,
                      "player2 damage": 0,
                      "turn_counter" : 0}
 
  
-    for turn_player in range(rounds):
+    for _ in range(start_round):
         current_damage = 0
-        while current_damage <= player_health:
 
-            print("Player 1's turn!")
-            player1_roll = round(current_damage)
-            print("Player 2's turn!")
-            Player2_roll = round(current_damage)
+        print("Player 1's turn!")
+        player1_roll = round(current_damage)
+        print("Player 2's turn!")
+        Player2_roll = round(current_damage)
                 
-            round_num = 0
-            round_num += 1
-            player_points["player1 damage"] += player1_roll
-            player_points["player2 damage"] += Player2_roll
+        round_num = 0
+        round_num += 1
+        player_points["player1 damage"] += player1_roll
+        player_points["player2 damage"] += Player2_roll
 
-            print("Player1 total score is :", player_points["player1 damage"])
-            print("Player2 total score is :", player_points["player2 damage"])
+        print("Player1 total score is :", player_points["player1 damage"])
+        print("Player2 total score is :", player_points["player2 damage"])
 
-            player_points["turn_counter"] += 1
-            player1_health = player_health - player_points["player2 damage"]
-            player2_health = player_health - player_points["player1 damage"]
-
-            if player1_health <= 0:
-                print("Winner is Player2!!")
-            if player2_health <= 0:
-                print("Winner is Player1!!")
-            if player_points["turn_counter"] >= rounds:
-                break
-
-            
+        player_points["turn_counter"] += 1
+        player1_health = player_health - player_points["player2 damage"]
+        player2_health = player_health - player_points["player1 damage"]
 
     print(f"Player1 has {player1_health} health left, and Player2 has {player2_health} health left.")
 
