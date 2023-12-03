@@ -9,25 +9,29 @@ def dice():
 
 def round(damage):
     current_damage = damage
-    keep_roll = input("Do you want to roll? yes/no:")
-    score = dice()
-    
-    if keep_roll == "yes" and score != 1:
-        current_damage += score
-        print("Your damage is :" , current_damage)
-        return current_damage
-    
-    if keep_roll == "no":
-        print("Your turn is over")
-        print(f"You have done {current_damage} points of damage!")
-        return current_damage
+    keep_going = True 
+    while keep_going == True:
+        keep_roll = input("Do you want to roll? yes/no:")
+        score = dice()
         
-                    
-    if keep_roll == "yes" and score == 1:
-        print("You rolled a 1! Your turn is over!")
-        current_damage = 0
-        print(f"You have done {current_damage} points of damage!")
-        return current_damage
+        if keep_roll == "yes" and score != 1:
+            current_damage += score
+            print("Your damage is :" , current_damage)
+            return current_damage
+        
+        if keep_roll == "no":
+            keep_going = False
+            print("Your turn is over")
+            print(f"You have done {current_damage} points of damage!")
+            return current_damage
+            
+                        
+        if keep_roll == "yes" and score == 1:
+            keep_going = False
+            print("You rolled a 1! Your turn is over!")
+            current_damage = 0
+            print(f"You have done {current_damage} points of damage!")
+            return current_damage
         
 
 def main():
@@ -58,7 +62,7 @@ def main():
 
             print("Player 1's turn!")
             player1_roll = round(current_damage)
-            print("Player 2's turn!/n")
+            print("Player 2's turn!")
             Player2_roll = round(current_damage)
                 
             round_num = 0
@@ -68,10 +72,10 @@ def main():
 
             print("Player1 total score is :", player_points["player1 damage"])
             print("Player2 total score is :", player_points["player2 damage"])
-            
+
             player_points["turn_counter"] += 1
-            player1_health = player_health - player_points["player1 damage"]
-            player2_health = player_health - player_points["player2 damage"]
+            player1_health = player_health - player_points["player2 damage"]
+            player2_health = player_health - player_points["player1 damage"]
 
             if player1_health <= 0:
                 print("Winner is Player2!!")
